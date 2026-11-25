@@ -1,0 +1,1 @@
+Chiara Group website assets.
