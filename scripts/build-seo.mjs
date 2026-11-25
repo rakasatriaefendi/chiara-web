@@ -72,6 +72,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 
 const root = new URL('../', import.meta.url);
 const output = new URL('dist/', root);
+const googleVerificationFile = 'google276d901ea1f943e4.html';
 const source = await readFile(new URL('index.html', root), 'utf8');
 const closingHead = /<\/head>/i;
 if (!closingHead.test(source)) {
@@ -89,6 +90,7 @@ await Promise.all([
   writeFile(new URL('robots.txt', output), robots),
   writeFile(new URL('sitemap.xml', output), sitemap),
   copyFile(new URL(logoPath, root), new URL(logoPath, output)),
+  copyFile(new URL(googleVerificationFile, root), new URL(googleVerificationFile, output)),
 ]);
 
 console.log(`Built static site and SEO files for ${homepage}`);
